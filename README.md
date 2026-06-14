@@ -1,6 +1,6 @@
 # Central Luzon Climate-Aware Logistics & Supply Chain Optimization Engine
 
-#### Video Demo: https://youtu.be/o1_Uc7InOO0
+
 
 ##  Project Overview
 The Central Luzon Climate-Aware Logistics & Supply Chain Optimization Engine is an AI-driven disaster management and operations research platform developed to solve critical routing failures during humanitarian crises. Traditional transit planning and consumer GPS navigation protocols heavily rely on static distance metrics, calculating optimal paths solely to minimize travel time or mileage. During extreme meteorological events—such as severe typhoons hitting the low-lying agricultural plains of Bulacan, Pampanga, and Nueva Ecija in the Philippines this distance-centric approach becomes exceptionally hazardous. Standard navigation often routes high-capacity emergency supply trucks directly into severe floodwaters, stranding asset operators and delaying critical life saving aid.
