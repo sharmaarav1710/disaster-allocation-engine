@@ -1,6 +1,10 @@
 ---
 
+<<<<<<< HEAD
 # Philippines Climate-Aware Logistics & Supply Chain Optimization Engine
+=======
+
+>>>>>>> origin/main
 
 #### Video Demo: [https://youtu.be/o1_Uc7InOO0](https://youtu.be/o1_Uc7InOO0)
 
