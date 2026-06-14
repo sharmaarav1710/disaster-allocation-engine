@@ -11,7 +11,6 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# 🔐 CRITICAL: Enable CORS so your React frontend can access this API
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"], 
@@ -20,7 +19,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Helper to initialize network
 def get_initialized_network():
     network = RegionalNetwork()
     locations = ["Clark_Hub", "Gapan_City", "San_Fernando", "Calumpit", "Malolos_City", "Plaridel"]
@@ -37,7 +35,6 @@ def get_initialized_network():
     network.add_road("Calumpit", "Plaridel",      8.0) 
     return network
 
-# Static registry for specs: (Elevation, Population, Bridges, Latitude, Longitude)
 def get_town_specs(town_name: str):
     registry = {
         "Clark_Hub":     (210.0, 450,  0, 15.1794, 120.5397), # Pampanga
@@ -61,7 +58,6 @@ def root():
 def optimize_route(payload: RouteRequest):
     network = get_initialized_network()
     
-    # 1. Apply AI flood risk predictions (Fixed the 5-value unpacking issue here)
     for town in list(network.graph.keys()):
         elev, pop, bridges, lat, lon = get_town_specs(town)
         risk_score = predict_flood_risk(elev, payload.rainfall, pop, bridges)
@@ -70,16 +66,14 @@ def optimize_route(payload: RouteRequest):
     if payload.target_town not in network.graph:
         raise HTTPException(status_code=442, detail=f"Town '{payload.target_town}' not found in registry.")
         
-    # 2. Calculate optimal safe route using Dijkstra's algorithm
+
     total_cost, path = find_optimal_route(network, "Clark_Hub", payload.target_town)
-    
-    # 3. Construct a structural map of coordinates for Leaflet map markers
+
     coordinate_map = {}
     for town in network.graph.keys():
         _, _, _, lat, lon = get_town_specs(town)
         coordinate_map[town] = {"lat": lat, "lon": lon}
-    
-    # 4. Construct response with both analytics data and physical mapping arrays
+
     return {
         "rainfall_input_mm": payload.rainfall,
         "destination": payload.target_town,
