@@ -1,29 +1,41 @@
-# Central Luzon Climate-Aware Logistics & Supply Chain Optimization Engine
+---
 
-#### Video Demo: https://youtu.be/o1_Uc7InOO0
+# Philippines Climate-Aware Logistics & Supply Chain Optimization Engine
 
-##  Project Overview
-The Central Luzon Climate-Aware Logistics & Supply Chain Optimization Engine is an AI-driven disaster management and operations research platform developed to solve critical routing failures during humanitarian crises. Traditional transit planning and consumer GPS navigation protocols heavily rely on static distance metrics, calculating optimal paths solely to minimize travel time or mileage. During extreme meteorological events—such as severe typhoons hitting the low-lying agricultural plains of Bulacan, Pampanga, and Nueva Ecija in the Philippines this distance-centric approach becomes exceptionally hazardous. Standard navigation often routes high-capacity emergency supply trucks directly into severe floodwaters, stranding asset operators and delaying critical life saving aid.
+#### Video Demo: [https://youtu.be/o1_Uc7InOO0](https://youtu.be/o1_Uc7InOO0)
 
-This engine solves this logistical vulnerability by seamlessly integrating predictive machine learning with dynamic graph theory. When an operator inputs a forecasted regional rainfall metric, the system processes environmental features through a trained Artificial Intelligence classifier to predict localized flood probabilities for major municipality nodes. It then dynamically adjusts an underlying weighted graph infrastructure, calculating optimized, risk-adjusted supply chain corridors from an inland staging hub (Clark Hub) down to disaster-stricken target cities. By injecting dynamic risk penalties directly into the geographical edge weights, the engine ensures that safety and navigation efficiency are optimized simultaneously.
+## Project Overview
+
+The Philippines Climate-Aware Logistics & Supply Chain Optimization Engine is an AI-driven disaster management and operations research platform developed to solve critical routing failures during humanitarian crises. Traditional transit planning and consumer GPS navigation protocols heavily rely on static distance metrics, calculating optimal paths solely to minimize travel time or mileage. During extreme meteorological events—such as severe typhoons hitting the low-lying agricultural plains or coastal corridors of the Philippines—this distance-centric approach becomes exceptionally hazardous. Standard navigation often routes high-capacity emergency supply trucks directly into severe floodwaters, stranding asset operators and delaying critical life-saving aid.
+
+This engine solves this logistical vulnerability by seamlessly integrating predictive machine learning with dynamic graph theory. When an operator inputs a forecasted archipelagic rainfall metric, the system processes environmental features through a trained Artificial Intelligence classifier to predict localized flood probabilities for major municipality and port nodes. It then dynamically adjusts an underlying weighted graph infrastructure, calculating optimized, risk-adjusted supply chain corridors from staging hubs across the country down to disaster-stricken target islands and cities. By injecting dynamic risk penalties directly into the geographical edge weights, the engine ensures that safety and navigation efficiency are optimized simultaneously.
 
 ---
 
 ## File Layout and Component Descriptions
 
-### 1. `project.py`
-This script serves as the primary runtime entry point and interactive command-line user interface (CLI) for the entire application. It coordinates the execution workflow by initializing the core predictive modules, managing terminal input/output operations, and displaying real-time simulation summaries. Upon launch, it prompts the operator for real-time weather forecasts, triggers the machine learning prediction sequence, prints the localized regional risk tables, and interfaces with the pathfinding optimizer to display final routing chains, navigation arrays, and accumulated safety penalties.
+### 1. `frontend/src/App.jsx`
 
-### 2. `src/predictor.py`
-This module manages the system’s predictive analytics layer, abstracting all data-science operations. It is responsible for training, serializing, and invoking a Scikit-Learn RandomForestClassifier. The model evaluates historical municipal geographic traits—such as elevation scales above sea level, local population densities, and known structural drainage choke points—against real-time rainfall inputs to generate an absolute flood risk probability percentage for every municipal territory registered within the engine's database.
+The primary visual hub and command center of the platform. It provides a real-time, interactive geospatial dashboard featuring high-contrast dark telemetry readouts and a responsive React-Leaflet GIS map component. The interface captures configuration inputs via an interactive precipitation gauge slider, displays an adaptive archipelagic vulnerability feed, highlights node accessibility states, and overlays dynamic polyline routing chains across the country's logistical network.
 
-### 3. `src/graph.py`
-This module models the physical regional geography and transit infrastructure of Central Luzon. It structures the highway networks linking target municipalities using a customized, dynamic Adjacency List graph representation. Crucially, the module implements the system's risk-wrapper logic: if a destination node's calculated AI flood probability exceeds established emergency thresholds, the edge weights (travel costs) connecting adjacent paths dynamically scale up toward infinity, mathematically isolating and neutralizing that route.
+### 2. `project.py`
 
-### 4. `src/optimizer.py`
-This module houses the operations research and algorithmic routing engine. It implements a high-efficiency Dijkstra’s Algorithm optimized with a binary min-priority queue via Python’s native heapq module. It consumes the dynamically penalized graph state generated by the network layers to discover the absolute lowest-cost, safest path across the altered network, ensuring that supply trucks automatically circumvent dangerous, high-risk flooded municipalities.
+This script serves as the primary backend runtime entry point and alternative command-line interface (CLI). It coordinates the application's core workflow by initializing the predictive modules, managing loopback operations, and displaying simulation summaries. Upon receiving live environmental inputs, it triggers the machine learning sequence, compiles regional risk tables, and interfaces with the pathfinding optimizer to structure final routing tables and navigation arrays.
 
-### 5. `tests/test_project.py`
+### 3. `src/predictor.py`
+
+This module manages the system’s predictive analytics layer, abstracting all data-science operations. It is responsible for training, serializing, and invoking a Scikit-Learn RandomForestClassifier. The model evaluates historical geographic traits—such as municipal elevation scales above sea level, local population densities, and known structural drainage choke points—against real-time rainfall inputs to generate an absolute flood risk probability percentage for every registered node.
+
+### 4. `src/graph.py`
+
+This module models the physical regional geography and inter-island transit infrastructure of the Philippines. It structures highway networks and maritime corridor channels using a customized, dynamic Adjacency List graph representation. Crucially, the module implements the system's risk-wrapper logic: if a destination node's calculated AI flood probability exceeds established emergency thresholds, the edge weights (travel costs) connecting adjacent paths dynamically scale up toward infinity, mathematically isolating and neutralizing that route.
+
+### 5. `src/optimizer.py`
+
+This module houses the operations research and algorithmic routing engine. It implements a high-efficiency Dijkstra’s Algorithm optimized with a binary min-priority queue via Python’s native heapq module. It consumes the dynamically penalized graph state generated by the network layers to discover the absolute lowest-cost, safest path across the altered network, ensuring that supply fleets automatically circumvent dangerous, high-risk flooded nodes.
+
+### 6. `tests/test_project.py`
+
 The dedicated automated testing framework for the application, built natively using pytest. It contains a suite of unit tests designed to isolate and validate individual architectural components. These include checking machine learning probability array outputs, verifying that graph edge mutations respond correctly to severe environmental risk modifiers, and ensuring the priority queue consistently identifies mathematically accurate optimal paths across modified networks.
 
 ---
@@ -33,7 +45,9 @@ The dedicated automated testing framework for the application, built natively us
 During the development lifecycle of this engine, several major technical design choices were heavily debated before finalizing the application architecture:
 
 ### Graph Data Structure: Adjacency Matrix vs. Adjacency List
-We initially debated using a two-dimensional Adjacency Matrix array to map the municipal highway networks. While an Adjacency Matrix offers rapid $O(1)$ edge lookups, it suffers from a rigid $O(V^2)$ space complexity. Because our regional map registry represents a sparse graph—where most municipal sectors are only connected to a few adjacent highway checkpoints or physical roads—an Adjacency List was chosen instead. This decision optimized spatial efficiency to $O(V + E)$ and significantly minimized iteration overhead when searching a node's immediate neighbors during the pathfinding phase.
+
+We initially debated using a two-dimensional Adjacency Matrix array to map the municipal highway and maritime lane networks. While an Adjacency Matrix offers rapid $O(1)$ edge lookups, it suffers from a rigid $O(V^2)$ space complexity. Because our regional map registry represents a sparse graph—where most municipal sectors are only connected to a few adjacent highway checkpoints or inter-island shipping routes—an Adjacency List was chosen instead. This decision optimized spatial efficiency to $O(V + E)$ and significantly minimized iteration overhead when searching a node's immediate neighbors during the pathfinding phase.
 
 ### Pathfinding Logic: Breadth-First Search (BFS) vs. Dijkstra’s Algorithm
-We also evaluated whether a standard Breadth-First Search (BFS) would be sufficient for calculating routes. While BFS is simpler to implement and effectively calculates paths across unweighted networks, it assumes all traversal steps carry identical costs. Because our engine requires roads to take on variable, dynamic "safety penalties" based on AI-calculated flood percentages, an unweighted routing algorithm was completely unfeasible. Upgrading the routing backend to a min-priority queue Dijkstra's Algorithm ($O(E \log V)$) allowed us to seamlessly blend physical travel distances with fluid, real-time risk penalties, giving the system its core climate-aware capabilities.
+
+We also evaluated whether a standard Breadth-First Search (BFS) would be sufficient for calculating routes. While BFS is simpler to implement and effectively calculates paths across unweighted networks, it assumes all traversal steps carry identical costs. Because our engine requires routes to take on variable, dynamic "safety penalties" based on AI-calculated flood percentages, an unweighted routing algorithm was completely unfeasible. Upgrading the routing backend to a min-priority queue Dijkstra's Algorithm ($O(E \log V)$) allowed us to seamlessly blend physical travel distances with fluid, real-time risk penalties, giving the system its core climate-aware capabilities.
