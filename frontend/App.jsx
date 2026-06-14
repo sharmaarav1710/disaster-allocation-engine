@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from 'react-
 import { Shield, CloudRain, Navigation, Activity, Waves, AlertTriangle, Compass, RefreshCw, Layers } from 'lucide-react';
 import L from 'leaflet';
 
-// Leaflet anchor icon configurations
+
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
@@ -25,7 +25,6 @@ export default function App() {
   const [apiData, setApiData] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  // Nationwide tracking architecture configuration spanning all operational regions
   const townsData = [
     { id: "Manila_Core", name: "Manila Core Hub", region: "Luzon" },
     { id: "Clark_Hub", name: "Clark Aviation Hub", region: "Luzon" },
@@ -120,10 +119,10 @@ export default function App() {
       {/* Main Workspace Frame */}
       <div className="flex flex-1 overflow-hidden">
         
-        {/* HUGE, BRIGHT, COSMIC SLATE-INDIGO SIDEBAR CONTAINER */}
+       
         <aside className="w-[560px] bg-gradient-to-b from-indigo-950/90 via-slate-900 to-indigo-950/90 border-r-2 border-indigo-500/30 p-6 flex flex-col space-y-6 overflow-y-auto shrink-0 z-10 text-slate-100 shadow-[10px_0_40px_rgba(0,0,0,0.5)] backdrop-blur-md">
           
-          {/* Controls Card Component Container */}
+         
           <div className={`p-6 rounded-2xl border-2 transition-all duration-500 bg-slate-900/90 shadow-2xl ${rainfall > 200 ? 'border-rose-500 shadow-rose-950/40 bg-gradient-to-br from-slate-900 to-rose-950/30' : 'border-cyan-400 shadow-cyan-950/30 bg-gradient-to-br from-slate-900 to-indigo-950/40'}`}>
             <div className="flex items-center justify-between mb-5">
               <h2 className="text-sm font-black text-white uppercase tracking-widest flex items-center gap-2.5">
@@ -179,7 +178,7 @@ export default function App() {
             </div>
           </div>
 
-          {/* Core Analytics Stat Badges */}
+       
           <div className="grid grid-cols-2 gap-4">
             <div className="p-4 bg-slate-900 border-2 border-cyan-400/50 rounded-2xl flex items-center gap-4 shadow-2xl bg-gradient-to-br from-slate-900 to-indigo-950/50 hover:border-cyan-400 transition-all duration-300">
               <div className="p-3 bg-cyan-500/20 rounded-xl text-cyan-400 border border-cyan-400/40 shadow-[0_0_15px_rgba(6,182,212,0.3)]">
@@ -201,7 +200,7 @@ export default function App() {
             </div>
           </div>
 
-          {/* Interactive Risk List Grid Feed Header */}
+       
           <div className="flex-1 flex flex-col space-y-3 min-h-[320px]">
             <div className="flex items-center justify-between border-b-2 border-indigo-500/30 pb-3">
               <h3 className="text-sm font-black text-white uppercase tracking-widest font-mono flex items-center gap-2">
@@ -211,8 +210,7 @@ export default function App() {
                 <RefreshCw className="w-4 h-4 animate-spin" /> DISPATCH MATRIX LIVE
               </div>
             </div>
-            
-            {/* Scrollable Risk Node Target Rows */}
+      
             <div className="space-y-3 overflow-y-auto pr-1 flex-1 max-h-[360px] scrollbar-thin scrollbar-thumb-indigo-500">
               {townsData.map(town => {
                 const calculatedHubRisk = Math.min(calculatedRiskVal + (town.region === 'Luzon' ? 4 : town.region === 'Visayas' ? -6 : 5), 100);
@@ -252,7 +250,7 @@ export default function App() {
             </div>
           </div>
 
-          {/* Routing Information Box Metrics Container */}
+
           <div className="bg-slate-900 p-5 rounded-2xl border-2 border-indigo-500/30 shadow-[inset_0_0_30px_rgba(0,0,0,0.5)] mt-auto">
             <h3 className="text-xs font-black text-indigo-300 uppercase tracking-widest flex items-center gap-2 font-mono mb-4">
               <Navigation className="w-5 h-5 text-emerald-400" /> Operational Pathing Logic Output
@@ -288,7 +286,7 @@ export default function App() {
           </div>
         </aside>
 
-        {/* Map Display Viewport */}
+
         <main className="flex-1 h-full bg-slate-100 relative">
           <MapContainer 
             center={[12.8797, 121.7740]} zoom={6} 
