@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  background-color: #0f172a;
+  color: #f8fafc;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+@layer utilities {
+  /* Hide standard scrollbars and add sleek dashboard aesthetics */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 5px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #020617; /* slate-950 */
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #334155; /* slate-700 */
+    border-radius: 9999px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #06b6d4; /* cyan-500 */
+  }
+}
